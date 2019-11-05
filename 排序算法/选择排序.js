@@ -18,3 +18,6 @@ function swap(array, a, b) {
     array[a] = array[b];
     array[b] = tmp;
 }
+
+平均时间复杂度		最好情况	最坏情况	空间复杂度
+O(n²)			  O(n²)		O(n²)		O(1)
