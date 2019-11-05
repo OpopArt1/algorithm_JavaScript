@@ -1,14 +1,16 @@
-function bubble(array) {
-    if(array.length === 0 || array === null) {
-        return;
+function bubbleSort(array) {
+  var length = array.length, isSwap;
+  for (var i = length - 1; i >= 0; i--) {     //逆序
+    isSwap = false;
+    for (var j = 0; j < i; j++) {            //正序
+      array[j] > array[j+1] && (isSwap = true) && swap(j,j+1,array);
     }
-    for(let i = array.length - 1; i >= 0; i--){
-        for(var j = 0; j < i; j++) {
-            if(array[j] > array[j+1]) {
-                [array[j], array[j+1]] = [array[j+1], array[j]];
-            }
-        }
-    }
-    return array;
+    if(!isSwap)
+      break;
+  }
+  return array;
 }
-// 时间复杂度O(n*n)	空间复杂度O(1)	稳定
+
+
+//平均时间复杂度       最好情况        最坏情况        空间复杂度
+//O(n²)                 O(n)            O(n²)       O(1)
