@@ -31,5 +31,5 @@ function heapSort(array) {
   }
   return array;
 }
-//平均情况	最好情况	最坏情况	辅助空间	
-//O(nlog₂n)	O(nlog₂n)	O(nlog₂n)	O(1)
+//平均情况      最好情况        最坏情况          辅助空间	
+//O(nlog₂n)	    O(nlog₂n)	     O(nlog₂n)	      O(1)
