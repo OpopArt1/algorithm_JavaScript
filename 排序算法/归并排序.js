@@ -16,5 +16,5 @@ function merge(left, right){ //合并两个子数组
   }
   return result.concat(left.length ? left : right);
 }
-//平均时间复杂度	最好情况	最坏情况	空间复杂度
-//O(nlog₂n)		  O(nlog₂n)	  O(nlog₂n)	   O(n)
+//平均时间复杂度   最好情况    最坏情况    空间复杂度
+//O(nlog₂n)       O(nlog₂n)   O(nlog₂n)   O(n)
