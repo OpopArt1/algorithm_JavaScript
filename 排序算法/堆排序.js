@@ -1,39 +1,35 @@
-function swap(array, a, b) {
+function swap(a, b, array) {
     var temp = array[a];
     array[a] = array[b];
     array[b] = temp;
 }
-//建初始堆
-function heapInsert(array, index) {
-    while(array[index] > array[parseInt((index-1)/2)]) {
-        swap(array, index, parseInt((index-1)/2));
-        index = parseInt((index-1)/2);
-    }
+function heapAdjust(array, i, length) {//堆调整
+  var left = 2 * i + 1,
+      right = 2 * i + 2,
+      largest = i;
+  if (left < length && array[largest] < array[left]) {
+    largest = left;
+  }
+  if (right < length && array[largest] < array[right]) {
+    largest = right;
+  }
+  if (largest != i) {
+    swap(i, largest, array);
+    heapAdjust(array, largest, length);
+  }
 }
-//重建堆
-function heapfiy(array, index, size) {
-    let left = index*2 + 1;
-    while(left <= size) {
-        let largest = 
-            left + 1 <= size && array[left] < array[left+1] ? left + 1 : left;
-        largest = array[index] < array[largest] ? largest : index;
-        if(largest === index) break;
-        swap(array, largest, index);
-        index = largest;
-        left = index*2 + 1;
-    }
+function heapSort(array) {
+  //建立大顶堆
+  length = array.length
+  for (var i = length>>1; i >= 0; i--) {
+    heapAdjust(array, i, length);
+  }
+  //调换第一个与最后一个元素,重新调整为大顶堆
+  for (var i = length - 1; i > 0; i--) {
+    swap(0, i, array);
+    heapAdjust(array, 0, --length);
+  }
+  return array;
 }
-
-function heap(array) {
-    if(array === null || array.length === 0) {return array}
-    var size = array.length - 1;
-    for(let i = 0; i <= size; i++) {
-        heapInsert(array, i);
-    }
-    swap(array, 0, size--)
-    while(size >= 0) {
-        heapfiy(array, 0, size);
-        swap(array, 0, size--);
-    }
-    return array;
-}
+//平均情况	最好情况	最坏情况	辅助空间	
+//O(nlog₂n)	O(nlog₂n)	O(nlog₂n)	O(1)
